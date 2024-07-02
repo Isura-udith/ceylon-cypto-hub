@@ -39,7 +39,7 @@ const Navbar = () => {
       </Link>
         <ul>
         <Link to={`/`}><li>Home</li></Link>
-            <li>E-Learnng</li>
+        <Link to={`/course`}><li>E-Learnng</li></Link>
             <li>Markect</li>
             <li>Trade</li>
             <li>Pricing</li>
