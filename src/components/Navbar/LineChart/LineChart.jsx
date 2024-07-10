@@ -9,8 +9,8 @@ useEffect(() => {
     let dataCopy = [["Date","Prices"]];
     if(historicalData.prices){
         historicalData.prices.map((item) => {
-            dataCopy.push([`${new Date(item[0]).toLocaleDateString().slice(0,-5)}`, item[1]])   
-    })
+            return dataCopy.push([`${new Date(item[0]).toLocaleDateString().slice(0,-5)}`, item[1]]);
+        })
     setData(dataCopy);
     }
 }, [historicalData])
