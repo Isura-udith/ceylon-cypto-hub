@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.1.4",
+    "@material-tailwind/react": "^2.1.9",
     "@react-three/drei": "^9.108.3",
     "@react-three/fiber": "^8.16.8",
     "@testing-library/jest-dom": "^5.17.0",

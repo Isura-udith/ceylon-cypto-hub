@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
 const Home = () => {
+  
   const { allCoin = [], currency } = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState([]);
   const [input, setInput] = useState('');

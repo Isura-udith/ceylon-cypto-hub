@@ -1,30 +1,29 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FiArrowUpRight } from "react-icons/fi";
 
 const Trade = () => {
   return (
     <div className="">
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        imgUrl="https://cdn.pixabay.com/photo/2021/09/06/12/40/cryptocurrency-6601591_960_720.jpg?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         subheading="Collaborate"
         heading="Built for all of us."
       >
         <ExampleContent />
       </TextParallaxContent>
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        imgUrl="https://cdn.pixabay.com/photo/2021/08/06/00/38/stock-trading-6525084_960_720.jpg?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         subheading="Quality"
-        heading="Never compromise."
+        heading="How to buy cryptocurrency"
       >
-        <ExampleContent />
+        <ExampleContentTwo />
       </TextParallaxContent>
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        subheading="Modern"
-        heading="Dress for the best."
+        imgUrl="https://cdn.pixabay.com/photo/2021/10/09/06/23/stock-market-6693060_1280.jpg?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        subheading="Broker"
+        heading="Connect with borker"
       >
-        <ExampleContent />
+        <ExampleContentThree />
       </TextParallaxContent>
     </div>
   );
@@ -112,23 +111,49 @@ const OverlayCopy = ({ subheading, heading }) => {
 const ExampleContent = () => (
   <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
     <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
-      Additional content explaining the above card here
+    Built for all of us.
+    </h2>
+    <div className="col-span-1 md:col-span-8">
+      <p className="mb-4 text-xl text-blue-200 md:text-2xl">
+      Choosing a cryptocurrency exchange is often the first step investors take when exploring the word of digital assets. 
+      While there are many ways to exchange cryptocurrencies for one another, centralized crypto exchanges provide a relatively easy way to convert cash into coins and tokens. 
+      </p>
+    </div>
+  </div>
+  
+
+);
+
+const ExampleContentTwo = () => (
+  <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+    <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+    How to buy cryptocurrency
+    </h2>
+    <div className="col-span-1 md:col-span-8">
+      <p className="mb-4 text-xl text-blue-100 md:text-2xl">
+      The first step is deciding which platform to use. Generally, you can choose between a traditional broker or dedicated cryptocurrency exchange:
+ Traditional brokers: 
+ These are online brokers who offer ways to buy and sell cryptocurrency, as well as other financial assets like stocks, bonds, and ETFs. These platforms tend to offer lower trading costs but fewer crypto features.
+Cryptocurrency exchanges: 
+There are many cryptocurrency exchanges to choose from, each offering different cryptocurrencies, wallet storage, interest-bearing account options, and more.
+      </p>
+    </div>
+  </div>
+);
+
+const ExampleContentThree = () => (
+  <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
+    <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
+    Connect with breker
     </h2>
     <div className="col-span-1 md:col-span-8">
       <p className="mb-4 text-xl text-neutral-600 md:text-2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
-        blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima
-        maiores voluptate est ut saepe accusantium maxime doloremque nulla
-        consectetur possimus.
+      Choosing a cryptocurrency exchange is often the first step investors take when exploring the word of digital assets. 
+      While there are many ways to exchange cryptocurrencies for one another, centralized crypto exchanges provide a relatively easy way to convert cash into coins and tokens. 
       </p>
-      <p className="mb-8 text-xl text-neutral-600 md:text-2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        reiciendis blanditiis aliquam aut fugit sint.
-      </p>
-      <button className="w-full py-4 text-xl text-white transition-colors rounded bg-neutral-900 px-9 hover:bg-neutral-700 md:w-fit">
-        Learn more <FiArrowUpRight className="inline" />
-      </button>
     </div>
   </div>
+  
+
 );
 export default Trade;
