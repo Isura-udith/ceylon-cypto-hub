@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Course.css';
 
@@ -11,6 +11,18 @@ const Course = () => {
     { id: 4, title: 'Candlestick Patterns for Cryptocurrency Trading', description: 'Master the art of reading candlestick patterns and improve your trading strategies. This course covers essential patterns, their meanings, and how to apply them in real-world trading scenarios.', instructor: 'Mark Lee', rating: 4.7 },
     { id: 5, title: 'Chart Patterns and Technical Analysis', description: 'Gain in-depth knowledge of chart patterns and their significance in predicting market movements. In here can learn to identify and utilize these patterns to enhance your trading decisions.', instructor: 'Samantha Green', rating: 4.6 },
   ];
+
+  // Chat state
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    if (input.trim()) {
+      setMessages([...messages, input]);
+      setInput('');
+    }
+  };
 
   return (
     <div>
@@ -25,6 +37,29 @@ const Course = () => {
         </p>
       </div>
 
+
+         {/* Chat Box Section */}
+         <div className="chat-box container mx-auto py-6 px-6">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Chat with Us</h2>
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <div className="chat-messages mb-4">
+            {messages.map((msg, index) => (
+              <div key={index} className="chat-message bg-blue-100 p-2 rounded my-2">{msg}</div>
+            ))}
+          </div>
+          <form onSubmit={handleSendMessage} className="flex">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="flex-grow p-2 border border-gray-300 rounded-l-lg"
+              placeholder="Type your message..."
+            />
+            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">Send</button>
+          </form>
+        </div>
+      </div>
+      
       {/* Courses Section */}
       <div className="container mx-auto py-0 px-6">
         <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Explore Our Courses</h2>
@@ -52,6 +87,11 @@ const Course = () => {
           ))}
         </div>
       </div>
+
+ 
+
+
+
     </div>
   );
 }

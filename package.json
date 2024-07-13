@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google/generative-ai": "^0.14.1",
     "@heroicons/react": "^2.1.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc-e02baf6c92-20240627",
+    "fs": "^0.0.1-security",
     "react": "^18.3.1",
     "react-axios": "^2.0.6",
     "react-dom": "^18.3.1",
