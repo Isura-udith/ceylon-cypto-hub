@@ -4,13 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const Trade = () => {
   return (
     <div className="">
-      <TextParallaxContent
-        imgUrl="https://cdn.pixabay.com/photo/2021/09/06/12/40/cryptocurrency-6601591_960_720.jpg?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        subheading="Collaborate"
-        heading="Built for all of us."
-      >
-        <ExampleContent />
-      </TextParallaxContent>
+
       <TextParallaxContent
         imgUrl="https://cdn.pixabay.com/photo/2021/08/06/00/38/stock-trading-6525084_960_720.jpg?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         subheading="Quality"
@@ -107,22 +101,6 @@ const OverlayCopy = ({ subheading, heading }) => {
     </motion.div>
   );
 };
-
-const ExampleContent = () => (
-  <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">
-    <h2 className="col-span-1 text-3xl font-bold md:col-span-4">
-    Built for all of us.
-    </h2>
-    <div className="col-span-1 md:col-span-8">
-      <p className="mb-4 text-xl text-blue-200 md:text-2xl">
-      Choosing a cryptocurrency exchange is often the first step investors take when exploring the word of digital assets. 
-      While there are many ways to exchange cryptocurrencies for one another, centralized crypto exchanges provide a relatively easy way to convert cash into coins and tokens. 
-      </p>
-    </div>
-  </div>
-  
-
-);
 
 const ExampleContentTwo = () => (
   <div className="grid max-w-5xl grid-cols-1 gap-8 px-4 pt-12 pb-24 mx-auto md:grid-cols-12">

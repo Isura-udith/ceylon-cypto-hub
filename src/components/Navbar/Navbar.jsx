@@ -53,7 +53,7 @@ const Navbar = () => {
 
       </ul>
       <div>
-        <Link to="/Signup"><button>Sign In</button></Link>
+        <Link to="/Login"><button>Log In</button></Link>
       </div>
     </div>
   );
