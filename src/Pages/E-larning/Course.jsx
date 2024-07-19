@@ -36,8 +36,6 @@ const Course = () => {
           At CEYLON CRYPTO HUB, we offer a range of courses designed to educate you on the intricacies of cryptocurrencies and the legal aspects surrounding them. Our goal is to provide you with the knowledge and skills to navigate the crypto world confidently and securely.
         </p>
       </div>
-
-
          {/* Chat Box Section */}
          <div className="chat-box container mx-auto py-6 px-6">
         <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Chat with Us</h2>
