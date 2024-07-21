@@ -54,7 +54,7 @@ const Navbar = () => {
           <Link to='/test'><li className='hover:text-gray-300'>Test</li></Link>
           <li className='hover:text-gray-300'>Pricing</li>
           <div className='flex items-center'>
-            <select onChange={currencyHandler} className='p-1 ml-2 text-white bg-blue-900 rounded'>
+            <select onChange={currencyHandler} className='p-1 ml-2 text-blue-900 bg-white rounded hover:bg-blue-100'>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
               <option value="LKR">LKR</option>
@@ -64,7 +64,7 @@ const Navbar = () => {
 
         <div>
           <Link to="/Login">
-            <button className='px-4 py-2 ml-4 text-white bg-blue-600 rounded hover:bg-blue-700'>Log In</button>
+            <button className='px-4 py-2 ml-4 text-blue-900 bg-white rounded-2xl hover:bg-blue-100'>Log In</button>
           </Link>
         </div>
       </div>

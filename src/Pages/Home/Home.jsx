@@ -49,7 +49,7 @@ const Home = () => {
 
   return (
     <>
-    <section className="grid items-center w-full grid-cols-1 gap-8 px-8 py-12 mx-auto max-w-10xl md:grid-cols-2">
+    <section className="grid items-center w-full grid-cols-1 gap-10 px-8 pt-20 pb-10 mx-auto max-w-10xl md:grid-cols-2">
           <div>
             <span className="block mb-8 text-4xl font-semibold text-indigo-300 md:text-3xl">
               Hi traders...
@@ -61,9 +61,11 @@ const Home = () => {
             Welcome to the largest cryptocurrency marketplac. Buy crypto, sell crypto, and trade crypto.
             Sign up to explore more about crypto.
             </p>
+            <Link to="/trade">
             <button className="px-4 py-2 font-medium text-white transition-all bg-indigo-500 rounded hover:bg-indigo-600 active:scale-95">
               Trade now
             </button>
+            </Link>
           </div>
           <ShuffleGrid />
         </section>

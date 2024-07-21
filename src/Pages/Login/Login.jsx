@@ -1,7 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const LoginWithGoogleButton = () => {
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+      });
+      if (response.data.success) {
+        // Redirect to the dashboard or homepage
+        navigate("/dashboard", { state: { id: response.data.id } });
+      } else {
+        setError(response.data.message);
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center w-full h-screen px-5 sm:px-0">
       <div className="flex w-full max-w-sm overflow-hidden bg-white border rounded-lg shadow-lg lg:max-w-4xl">
@@ -13,38 +43,50 @@ const LoginWithGoogleButton = () => {
         ></div>
         <div className="w-full p-8 lg:w-1/2">
           <p className="text-xl text-center text-gray-600">Welcome</p>
-          <div className="mt-4">
-            <label className="block mb-2 text-sm font-bold text-gray-700">
-              Email Address
-            </label>
-            <input
-              className="block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded focus:outline-2 focus:outline-blue-700"
-              type="email"
-              required
-            />
-          </div>
-          <div className="flex flex-col justify-between mt-4">
-            <div className="flex justify-between">
+          <form onSubmit={handleSubmit}>
+            <div className="mt-4">
               <label className="block mb-2 text-sm font-bold text-gray-700">
-                Password
+                Email Address
               </label>
+              <input
+                className="block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded focus:outline-2 focus:outline-blue-700"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
-            <input
-              className="block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded focus:outline-2 focus:outline-blue-700"
-              type="password"
-            />
-            <a
-              href="#"
-              className="w-full mt-2 text-xs text-gray-500 hover:text-gray-900 text-end"
-            >
-              Forget Password?
-            </a>
-          </div>
-          <div className="mt-8">
-            <button className="w-full px-4 py-2 font-bold text-white bg-blue-700 rounded hover:bg-blue-600">
-              Login
-            </button>
-          </div>
+            <div className="flex flex-col justify-between mt-4">
+              <div className="flex justify-between">
+                <label className="block mb-2 text-sm font-bold text-gray-700">
+                  Password
+                </label>
+              </div>
+              <input
+                className="block w-full px-4 py-2 text-gray-700 border border-gray-300 rounded focus:outline-2 focus:outline-blue-700"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <a
+                href="#"
+                className="w-full mt-2 text-xs text-gray-500 hover:text-gray-900 text-end"
+              >
+                Forget Password?
+              </a>
+            </div>
+            {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+            <div className="mt-8">
+              <button
+                type="submit"
+                className="w-full px-4 py-2 font-bold text-white bg-blue-700 rounded hover:bg-blue-600"
+                disabled={isLoading}
+              >
+                {isLoading ? "Loading..." : "Login"}
+              </button>
+            </div>
+          </form>
           <a
             href="#"
             className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
@@ -83,7 +125,7 @@ const LoginWithGoogleButton = () => {
               className="w-full text-xs text-center text-gray-500 capitalize"
             >
               Don&apos;t have any account yet?
-              <Link to={`/signup`}><span className="text-blue-700"> Sign Up</span></Link>
+              <Link to="/signup"><span className="text-blue-700"> Sign Up</span></Link>
             </a>
           </div>
         </div>
@@ -91,4 +133,5 @@ const LoginWithGoogleButton = () => {
     </div>
   );
 };
-export default LoginWithGoogleButton;
+
+export default Login;
