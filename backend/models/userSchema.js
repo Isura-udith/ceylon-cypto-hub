@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Please enter your name'],
+    trim: true
+  },
   email: {
     type: String,
     required: [true, 'Please enter your email'],
@@ -12,6 +17,16 @@ const userSchema = new mongoose.Schema({
         return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(v);
       },
       message: props => `${props.value} is not a valid email!`
+    }
+  },
+  phone: {
+    type: String,
+    required: [true, 'Please enter your phone number'],
+    validate: {
+      validator: function(v) {
+        return /^\d{10}$/.test(v);
+      },
+      message: props => `${props.value} is not a valid phone number!`
     }
   },
   password: {

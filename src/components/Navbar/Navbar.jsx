@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
-import './Navbar.css';
+import React, { useContext, useState, useEffect } from 'react';
 import logo from '../../assets/logo.png';
 import { CoinContext } from '../../context/CoinContext';
 import { Link } from 'react-router-dom';
-import DarkModeToggle from './DarkModeToggle';
 
 const Navbar = () => {
   const { setCurrency } = useContext(CoinContext);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const currencyHandler = (event) => {
     switch (event.target.value) {
@@ -29,31 +28,45 @@ const Navbar = () => {
     }
   };
 
-  return (
-    <div className='navbar'>
-      <Link to={`/`}>
-        <img src={logo} alt='logo' className='logo' />
-      </Link>
-    
-      <ul>
-        <Link to={`/`}><li>Home</li></Link>
-        <Link to={`/course`}><li>E-Learning</li></Link>
-        <Link to={`/market`}><li>Market</li></Link>
-        <Link to={`/trade`}><li>Trade</li></Link>
-        <Link to='/test'><li>Test</li></Link>
-        <li>Pricing</li>
-        <div className='nav-right'>
-          <select onChange={currencyHandler}>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="LKR">LKR</option>
-          </select>          
-        </div>
-        <DarkModeToggle /> {}
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      setIsScrolled(scrollTop > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
-      </ul>
-      <div>
-        <Link to="/Login"><button>Log In</button></Link>
+  return (
+    <div className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black bg-opacity-50' : 'bg-transparent'}`}>
+      <div className='flex justify-between items-center p-[4px] px-[4%] h-[4.5rem]'>
+        <Link to={`/`}>
+          <img src={logo} alt='logo' className='h-16' />
+        </Link>
+
+        <ul className='flex gap-12'>
+          <Link to={`/`}><li className='hover:text-gray-300'>Home</li></Link>
+          <Link to={`/course`}><li className='hover:text-gray-300'>E-Learning</li></Link>
+          <Link to={`/market`}><li className='hover:text-gray-300'>Market</li></Link>
+          <Link to={`/trade`}><li className='hover:text-gray-300'>Trade</li></Link>
+          <Link to='/test'><li className='hover:text-gray-300'>Test</li></Link>
+          <li className='hover:text-gray-300'>Pricing</li>
+          <div className='flex items-center'>
+            <select onChange={currencyHandler} className='p-1 ml-2 text-white bg-blue-900 rounded'>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+              <option value="LKR">LKR</option>
+            </select>
+          </div>
+        </ul>
+
+        <div>
+          <Link to="/Login">
+            <button className='px-4 py-2 ml-4 text-white bg-blue-600 rounded hover:bg-blue-700'>Log In</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
