@@ -1,53 +1,42 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-const Test = () => {
+import { useCallback, useEffect, useState } from "react";
+const Timer2 = () => {
   const [countDownTime, setCountDownTIme] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
   });
-  const minuteCircle = useRef();
-  const secondCircle = useRef();
-  const hourCircle = useRef();
-  const daysCircle = useRef();
-  const changeCircleoffset = (seconds, minutes, hours, days) => {
-    if (daysCircle.current) {
-      daysCircle.current.style.strokeDashoffset = `${
-        days > 0 ? 440 - (days * 440) / 365 : 440
-      }px`;
-      hourCircle.current.style.strokeDashoffset = `${
-        hours > 0 ? 451 - (hours * 451) / 24 : 451
-      }px`;
-      minuteCircle.current.style.strokeDashoffset = `${
-        minutes > 0 ? 451 - (minutes * 451) / 60 : 451
-      }px`;
-      secondCircle.current.style.strokeDashoffset = `${
-        seconds > 0 ? 451 - (seconds * 451) / 60 : 451
-      }px`;
-    }
-  };
-  const getTimeDifference = useCallback((countDownDate) => {
+  const getTimeDifference = (countDownTime) => {
     const currentTime = new Date().getTime();
-    const timeDiffrence = countDownDate - currentTime;
-    const days = Math.floor(timeDiffrence / (24 * 60 * 60 * 1000));
-    const hours = Math.floor(
-      (timeDiffrence % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor(
-      (timeDiffrence % (60 * 60 * 1000)) / (1000 * 60)
-    );
-    const seconds = Math.floor((timeDiffrence % (60 * 1000)) / 1000);
+    const timeDiffrence = countDownTime - currentTime;
+    let days =
+      Math.floor(timeDiffrence / (24 * 60 * 60 * 1000)) >= 10
+        ? Math.floor(timeDiffrence / (24 * 60 * 60 * 1000))
+        : `0${Math.floor(timeDiffrence / (24 * 60 * 60 * 1000))}`;
+    const hours =
+      Math.floor((timeDiffrence % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)) >=
+      10
+        ? Math.floor((timeDiffrence % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60))
+        : `0${Math.floor(
+            (timeDiffrence % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
+          )}`;
+    const minutes =
+      Math.floor((timeDiffrence % (60 * 60 * 1000)) / (1000 * 60)) >= 10
+        ? Math.floor((timeDiffrence % (60 * 60 * 1000)) / (1000 * 60))
+        : `0${Math.floor((timeDiffrence % (60 * 60 * 1000)) / (1000 * 60))}`;
+    const seconds =
+      Math.floor((timeDiffrence % (60 * 1000)) / 1000) >= 10
+        ? Math.floor((timeDiffrence % (60 * 1000)) / 1000)
+        : `0${Math.floor((timeDiffrence % (60 * 1000)) / 1000)}`;
     if (timeDiffrence < 0) {
-      changeCircleoffset(seconds, minutes, hours, days);
       setCountDownTIme({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
+        days: "00",
+        hours: "00",
+        minutes: "00",
+        seconds: "00",
       });
       clearInterval();
     } else {
-      changeCircleoffset(seconds, minutes, hours, days);
       setCountDownTIme({
         days: days,
         hours: hours,
@@ -55,131 +44,72 @@ const Test = () => {
         seconds: seconds,
       });
     }
-  }, []);
+  };
   const startCountDown = useCallback(() => {
     const customDate = new Date();
     const countDownDate = new Date(
       customDate.getFullYear(),
-      customDate.getMonth(),
-      customDate.getDate() + 1,
-      customDate.getHours() + 6,
-      customDate.getMinutes() + 59,
-      customDate.getSeconds() + 50
+      customDate.getMonth() + 1,
+      customDate.getDate() + 6,
+      customDate.getHours(),
+      customDate.getMinutes(),
+      customDate.getSeconds() + 1
     );
     setInterval(() => {
       getTimeDifference(countDownDate.getTime());
     }, 1000);
-  }, [getTimeDifference]);
+  }, []);
   useEffect(() => {
     startCountDown();
   }, [startCountDown]);
   return (
-    <div className="flex min-h-screen h-max md:h-screen flex-col md:flex-row justify-center items-center bg-gradient-to-l sm:bg-gradient-to-t from-[#88adf1] to-[]">
-      <div className="relative">
-        <svg className="w-48 h-48 -rotate-90">
-          <circle
-            r="70"
-            cx="90"
-            cy="90"
-            className="fill-transparent stroke-[#88adf1] stroke-[8px]"
-          ></circle>
-          <circle
-            r="70"
-            ref={daysCircle}
-            cx="90"
-            cy="90"
-            style={{
-              strokeDasharray: "440px",
-            }}
-            className="fill-transparent stroke-white  stroke-[8px]"
-          ></circle>
-        </svg>
-        <div className="absolute flex flex-col items-center w-24 h-20 text-2xl font-semibold text-white top-16 left-11">
-          <span className="text-center">{countDownTime?.days}</span>
-          <span className="text-center">
-            {countDownTime?.days == 1 ? "Day" : "Days"}
+    <div className="flex items-center justify-center p-16">
+      <div className="mx-3 sm:p-10 p-4 rounded-md flex justify-center flex-col gap-6 shadow-[5px_5px_50px_rgba(47,46,60,1)]">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-center sm:text-3xl text-xl font-semibold leading-8 text-[#FBFAF8]">
+            Hurry, Limited Availability
+          </h1>
+          <span className="text-sm font-semibold text-center leading-8 text-[#959AAE]">
+            Be a part of Singing Concert, Grab the Pass before it&apos;s
+            complete!
           </span>
         </div>
-      </div>
-      <div className="relative">
-        <svg className="w-48 h-48 -rotate-90">
-          <circle
-            r="70"
-            cx="90"
-            cy="90"
-            className="fill-transparent stroke-[#88adf1] stroke-[8px]"
-          ></circle>
-          <circle
-            r="70"
-            ref={hourCircle}
-            cx="90"
-            cy="90"
-            style={{
-              strokeDasharray: "451px",
-            }}
-            className="fill-transparent stroke-white  stroke-[8px]"
-          ></circle>
-        </svg>
-        <div className="absolute flex flex-col items-center w-24 h-20 text-2xl font-semibold text-white top-16 left-11">
-          <span className="text-center">{countDownTime?.hours}</span>
-          <span className="text-center">
-            {countDownTime?.hours == 1 ? "Hour" : "Hours"}
-          </span>
-        </div>
-      </div>
-      <div className="relative">
-        <svg className="w-48 h-48 -rotate-90">
-          <circle
-            r="70"
-            cx="90"
-            cy="90"
-            className="fill-transparent stroke-[#88adf1] stroke-[8px]"
-          ></circle>
-          <circle
-            r="70"
-            ref={minuteCircle}
-            cx="90"
-            cy="90"
-            style={{
-              strokeDasharray: "451px",
-            }}
-            className="fill-transparent stroke-white stroke-[8px]"
-          ></circle>
-        </svg>
-        <div className="absolute flex flex-col items-center w-24 h-20 text-2xl font-semibold text-white top-16 left-11">
-          <span className="text-center">{countDownTime?.minutes}</span>
-          <span className="text-center">
-            {countDownTime?.minutes == 1 ? "Minute" : "Minutes"}
-          </span>
-        </div>
-      </div>
-      <div className="relative">
-        <svg className="w-48 h-48 -rotate-90">
-          <circle
-            r="70"
-            cx="90"
-            cy="90"
-            className="fill-transparent stroke-[#88adf1] stroke-[8px]"
-          ></circle>
-          <circle
-            r="70"
-            cx="90"
-            cy="90"
-            className=" fill-transparent stroke-white  stroke-[8px]"
-            ref={secondCircle}
-            style={{
-              strokeDasharray: "451px",
-            }}
-          ></circle>
-        </svg>
-        <div className="absolute flex flex-col items-center w-24 h-20 text-2xl font-semibold text-white top-16 left-11">
-          <span className="text-center">{countDownTime?.seconds}</span>
-          <span className="text-center">
-            {countDownTime?.seconds == 1 ? "Second" : "Seconds"}
-          </span>
+        <div className="flex justify-between sm:px-4">
+          <div className="flex flex-col items-center justify-center gap-3">
+            <span className="py-3 px-3 flex justify-center items-center bg-[#88BDBC] text-[#112D32] text-3xl font-semibold rounded-md">
+              {countDownTime?.days}
+            </span>
+            <span className="text-sm text-[#FBFAF8] font-bold">
+              {countDownTime?.days == 1 ? "Day" : "Days"}
+            </span>
+          </div>
+          <div className="flex flex-col items-center justify-center gap-3">
+            <span className="py-3 px-3 bg-[#88BDBC] text-[#112D32] text-3xl font-semibold rounded-md">
+              {countDownTime?.hours}
+            </span>
+            <span className="text-sm text-[#FBFAF8] font-bold">
+              {countDownTime?.hours == 1 ? "Hour" : "Hours"}
+            </span>
+          </div>
+          <div className="flex flex-col items-center justify-center gap-3">
+            <span className="py-3 px-3 bg-[#88BDBC] text-[#112D32] text-3xl font-semibold rounded-md">
+              {countDownTime?.minutes}
+            </span>
+            <span className="text-sm text-[#FBFAF8] font-bold">
+              {countDownTime?.minutes == 1 ? "Minute" : "Minutes"}
+            </span>
+          </div>
+          <div className="flex flex-col items-center justify-center gap-3">
+            <span className="py-3 px-3 bg-[#88BDBC] text-[#112D32] text-3xl font-semibold rounded-md">
+              {countDownTime?.seconds}
+            </span>
+            <span className="text-sm text-[#FBFAF8] font-bold">
+              {countDownTime?.seconds == 1 ? "Second" : "Seconds"}
+            </span>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-export default Test;
+export default Timer2;

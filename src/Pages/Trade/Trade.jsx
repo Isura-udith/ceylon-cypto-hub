@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Calander from "../../components/Calander";
 
 const Trade = () => {
   return (

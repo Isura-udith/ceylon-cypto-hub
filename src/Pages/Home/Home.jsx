@@ -3,6 +3,8 @@ import './Home.css';
 import { CoinContext } from '../../context/CoinContext';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
+import About from '../../components/About';
+import Timer from '../../components/Timer';
 
 const Home = () => {
   
@@ -49,7 +51,8 @@ const Home = () => {
 
   return (
     <>
-    <section className="grid items-center w-full grid-cols-1 gap-10 px-8 pt-20 pb-10 mx-auto max-w-10xl md:grid-cols-2">
+    <section className="grid items-center w-full h-full gap-10 px-8 pt-20 pb-10 mx-auto g-rid-cols-1 max-w-10xl md:grid-cols-2">
+      
           <div>
             <span className="block mb-8 text-4xl font-semibold text-indigo-300 md:text-3xl">
               Hi traders...
@@ -57,9 +60,10 @@ const Home = () => {
             <h3 className="text-4xl font-semibold md:text-6xl">
               CEYLON CRYPTO HUB
             </h3>
-            <p className="my-4 text-base text-indigo-300 md:text-lg md:my-6">
+            <p className="my-4 text-base text-white md:text-lg md:my-6">
             Welcome to the largest cryptocurrency marketplac. Buy crypto, sell crypto, and trade crypto.
-            Sign up to explore more about crypto.
+            Sign up to explore more about crypto. <br/><br/>
+            Highlight the unique selling proposition of the InfyToken ecosystem in enabling this type of financing globally and across different asset classes.Briefly explain the concept of assets backed financing and its benefits
             </p>
             <Link to="/trade">
             <button className="px-4 py-2 font-medium text-white transition-all bg-indigo-500 rounded hover:bg-indigo-600 active:scale-95">
@@ -111,12 +115,16 @@ const Home = () => {
       </div>
     </div>
 
+    <Timer/>
+
     <section className="px-4 py-12 ">
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-2 md:grid-cols-[1fr_400px] md:gap-12">
         <Options votes={votes} setVotes={setVotes} />
         <Bars votes={votes} />
       </div>
     </section>
+
+   <About/>
     </>
   );
 }
