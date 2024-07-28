@@ -9,12 +9,11 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-  
+
     try {
       const response = await axios.post("http://localhost:5000/login", {
         email,
@@ -33,7 +32,7 @@ const Login = () => {
     } finally {
       setIsLoading(false);
     }
-  };  
+  };
 
   return (
     <div className="flex items-center justify-center w-full h-screen px-5 sm:px-0">

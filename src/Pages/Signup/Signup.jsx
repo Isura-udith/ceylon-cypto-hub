@@ -47,11 +47,11 @@ const Signup = () => {
   return (
     <div className="h-[100vh] items-center flex justify-center px-5 lg:px-0">
       <div className="flex justify-center flex-1 max-w-screen-xl bg-white border shadow sm:rounded-lg">
-        <div className="flex-1 hidden text-center bg-blue-900 md:flex">
+        <div className="flex-1 hidden max-w-screen-lg text-center bg-white rounded-lg md:flex">
           <div
             className="w-full m-12 bg-center bg-no-repeat bg-contain xl:m-16"
             style={{
-              backgroundImage: `url(https://www.tailwindtap.com/assets/common/marketing.svg)`,
+              backgroundImage: `url(https://cdn.pixabay.com/photo/2018/04/25/22/48/bitcoin-3350797_1280.png)`,
             }}
           ></div>
         </div>
@@ -61,7 +61,7 @@ const Signup = () => {
               <h1 className="text-2xl font-extrabold text-blue-900 xl:text-4xl">
                  Sign up
               </h1>
-              <p className="text-[12px] text-gray-500">
+              <p className="text-[12px] text-gray-500 pt-2">
                 Hey enter your details to create your account
               </p>
             </div>
