@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaMobileAlt, FaShieldAlt, FaLock, FaDollarSign, FaGlobe, FaSyncAlt, FaCoins, FaArrowUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ourWork = [
   {
@@ -116,7 +117,7 @@ const About = () => {
         <div className="grid justify-center grid-cols-1 lg:grid-cols-2 gap-7">
           {card?.map((data, index) => (
             <div className="flex items-center max-w-[650px] cursor-pointer hover:shadow-lg rounded-2xl" key={index}>
-              <div className="w-full bg-gradient-to-t to-[#ab0dca] from-[#3206D3] px-[1px] border py-[1px] 2xl:px-0.5 2xl:py-0.5 rounded-2xl">
+              <div className="w-full bg-gradient-to-t to-[#2c3473] from-[#3206D3] px-[1px] border py-[1px] 2xl:px-0.5 2xl:py-0.5 rounded-2xl">
                 <div className="h-full w-full rounded-2xl py-6 px-5 flex flex-col gap-2.5">
                   <div className="flex items-center justify-center w-12 h-12 text-white">
                     {data.icon}
@@ -166,11 +167,11 @@ const About = () => {
       <div className="flex flex-col items-center w-full px-8 pt-16 max-w-screen-3xl sm:px-20 gap-9">
         {dropDownData.map((acc, index) => (
           <div key={index} className="py-1">
-            <div className="w-full bg-gradient-to-t to-[#9517AF] from-[#3206D3] px-[1px] 2xl:px-0.5 2xl:py-0.5 py-[1px] rounded-2xl pt-10 max-h-21">
-              <div className="w-full h-full rounded-2xl">
-                <DropDown title={acc.title} content={acc.description} />
-              </div>
-            </div>
+            <div className="w-full px-[1px] 2xl:px-0.5 2xl:py-0.5 py-[1px] rounded-2xl pt-10 max-h-21 border border-white">
+      <div className="w-full h-full rounded-2xl">
+        <DropDown title={acc.title} content={acc.description} />
+      </div>
+    </div>
           </div>
         ))}
       </div>

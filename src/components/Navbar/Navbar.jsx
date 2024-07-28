@@ -40,7 +40,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black bg-opacity-50' : 'bg-transparent'}`}>
+    <div className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black bg-opacity-75' : 'bg-transparent'}`}>
       <div className='flex justify-between items-center p-[4px] px-[4%] h-[4.5rem]'>
         <Link to={`/`}>
           <img src={logo} alt='logo' className='h-16' />
@@ -52,7 +52,6 @@ const Navbar = () => {
           <Link to={`/market`}><li className='hover:text-indigo-300'>Market</li></Link>
           <Link to={`/trade`}><li className='hover:text-indigo-300'>Trade</li></Link>
           <Link to='/test'><li className='hover:text-indigo-300'>Test</li></Link>
-          <li className='hover:text-indigo-300'>Pricing</li>
           <div className='flex items-center'>
             <select onChange={currencyHandler} className='p-1 ml-2 text-blue-900 bg-white rounded hover:bg-blue-100'>
               <option value="USD">USD</option>
@@ -64,7 +63,10 @@ const Navbar = () => {
 
         <div>
           <Link to="/Login">
-            <button className='px-4 py-2 ml-4 text-blue-900 bg-white rounded-2xl hover:bg-blue-100'>Log In</button>
+            <button className='px-4 py-2 ml-4 text-blue-900 bg-white rounded-2xl hover:bg-blue-100'>Login</button>
+          </Link>
+          <Link to="/Signup">
+            <button className='px-4 py-2 ml-4 text-blue-900 bg-white rounded-2xl hover:bg-blue-100'>Signup</button>
           </Link>
         </div>
       </div>

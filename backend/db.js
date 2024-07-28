@@ -1,3 +1,4 @@
+// db.js
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -9,12 +10,18 @@ if (!MONGO_URL || !DB_NAME) {
   process.exit(1); // Exit the process with a failure code
 }
 
-mongoose.connect(MONGO_URL, {
-  dbName: DB_NAME,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
-  console.log('Connected to database');
-}).catch((err) => {
-  console.error('Error connecting to database:', err);
-});
+const connectDB = async () => {
+  try {
+    await mongoose.connect(MONGO_URL, {
+      dbName: DB_NAME,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to database');
+  } catch (err) {
+    console.error('Error connecting to database:', err);
+    process.exit(1); // Exit the process with a failure code
+  }
+};
+
+module.exports = connectDB;

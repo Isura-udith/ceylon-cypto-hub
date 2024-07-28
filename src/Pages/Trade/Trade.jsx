@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Calander from "../../components/Calander";
+import Tradedata from "../../components/Tradedata";
 
 const Trade = () => {
   return (
@@ -20,6 +21,7 @@ const Trade = () => {
       >
         <ExampleContentThree />
       </TextParallaxContent>
+      <Tradedata/>
     </div>
   );
 };
@@ -113,8 +115,6 @@ const ExampleContentTwo = () => (
       The first step is deciding which platform to use. Generally, you can choose between a traditional broker or dedicated cryptocurrency exchange:
  Traditional brokers: 
  These are online brokers who offer ways to buy and sell cryptocurrency, as well as other financial assets like stocks, bonds, and ETFs. These platforms tend to offer lower trading costs but fewer crypto features.
-Cryptocurrency exchanges: 
-There are many cryptocurrency exchanges to choose from, each offering different cryptocurrencies, wallet storage, interest-bearing account options, and more.
       </p>
     </div>
   </div>

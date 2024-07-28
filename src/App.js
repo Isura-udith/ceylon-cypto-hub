@@ -8,7 +8,7 @@ import Market from './Pages/Market/Market'
 import Login from './Pages/Login/Login'
 import Trade from './Pages/Trade/Trade'
 import Signup from './Pages/Signup/Signup'
-import Dashboard from './Pages/Dashboard/Dashboard'
+import Dashboard from './Pages/Dashboard/UserDashboard'
 import Test from './Pages/Test/Test'
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Trade' element={<Trade/>}/>
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='dashboard' element={<Dashboard/>}/>
+        <Route path='/userdashboard' element={<Dashboard/>}/>
         <Route path='/Test' element={<Test/>}/>
 
       </Routes>

@@ -9,19 +9,22 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-
+  
     try {
       const response = await axios.post("http://localhost:5000/login", {
         email,
         password,
       });
       if (response.data.success) {
+        // Store the token
+        localStorage.setItem('token', response.data.token);
         // Redirect to the dashboard or homepage
-        navigate("/dashboard", { state: { id: response.data.id } });
+        navigate("/userdashboard", { state: { id: email } });
       } else {
         setError(response.data.message);
       }
@@ -30,7 +33,7 @@ const Login = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  };  
 
   return (
     <div className="flex items-center justify-center w-full h-screen px-5 sm:px-0">
