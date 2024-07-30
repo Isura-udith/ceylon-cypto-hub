@@ -52,7 +52,13 @@ const Chat = () => {
 
   return (
     <div className="chat-box container mx-auto py-6 px-6">
-      <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Chat with Us</h2>
+      <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">CEYLON CRYPTO HUB AI Assistant: Your Guide in the Crypto World
+
+
+
+
+
+</h2>
       <div className="bg-white rounded-lg shadow-md p-4">
         <div className="chat-messages mb-4">
           {messages.map((msg, index) => (

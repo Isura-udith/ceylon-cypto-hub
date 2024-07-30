@@ -72,12 +72,11 @@ const Course = () => {
           Cryptocurrencies have revolutionized the financial world by offering a decentralized and secure method of transaction. They are built on blockchain technology, which ensures transparency and immutability. However, as with any financial asset, there are legal considerations to be aware of. Different countries have varying regulations regarding the use and trading of cryptocurrencies. It is essential to stay informed about the legal landscape to ensure compliance and secure transactions.
         </p>
         <p className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-center">
-          At CEYLON CRYPTO HUB, we offer a range of courses designed to educate you on the intricacies of cryptocurrencies and the legal aspects surrounding them. Our goal is to provide you with the knowledge and skills to navigate the crypto world confidently and securely.
-        </p>
+        At CEYLON CRYPTO HUB, we offer a range of courses designed to educate you on the intricacies of cryptocurrencies and the legal aspects surrounding them. Our goal is to provide you with the knowledge and skills to navigate the crypto world confidently and securely. Additionally, we are integrating an AI bot into our platform to enhance your learning experience by providing real-time assistance and support.</p>
       </div>
       {/* Chat Component */}
       <Chat />
-      {/* Courses Section */}
+
       <div className="container mx-auto py-0 px-6">
         <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Explore Our Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
