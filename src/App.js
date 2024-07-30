@@ -10,6 +10,8 @@ import Trade from './Pages/Trade/Trade'
 import Signup from './Pages/Signup/Signup'
 import Dashboard from './Pages/Dashboard/UserDashboard'
 import Test from './Pages/Test/Test'
+import Elearning from './Pages/E-learning/Course'
+
 
 const App = () => {
 
@@ -28,6 +30,8 @@ const App = () => {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/userdashboard' element={<Dashboard/>}/>
         <Route path='/Test' element={<Test/>}/>
+        <Route path='/course' element={<Elearning/>}/>
+        
 
       </Routes>
       <Footer/>

@@ -1,0 +1,162 @@
+/* Course.css */
+
+.intro-section {
+  background-color: #2b6bb000;
+  color: rgb(5, 4, 4);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: white;
+}
+
+.intro-section h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.intro-section p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  max-width: 90rem;
+  margin: 0 auto 1.5rem;
+}
+
+.course-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+  transform: scale(1.05);
+}
+
+.course-card img {
+  height: 12rem;
+  object-fit: cover;
+}
+
+.course-card .absolute {
+  bottom: 0;
+  left: 0;
+  background-color: #3182ce;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.course-card .p-6 {
+  padding: 1.5rem;
+}
+
+.course-card .text-gray-700 {
+  color: #4a5568;
+}
+
+.course-card .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.course-card .flex .fill-current {
+  fill: currentColor;
+  margin-right: 0.5rem;
+}
+
+.course-card .text-gray-600 {
+  color: #718096;
+}
+
+.course-card .bg-blue-600 {
+  background-color: #3182ce;
+}
+
+.course-card .bg-blue-600:hover {
+  background-color: #2b6cb0;
+}
+
+.course-card .rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.course-card .overflow-hidden {
+  overflow: hidden;
+}
+
+.course-card .shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+  margin-top: 2rem;
+}
+
+.chat-box h2 {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.chat-box .bg-white {
+  background-color: #f7fafc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box .chat-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+
+}
+
+.chat-box .chat-message {
+  background-color: #8daecf69;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  color: #2b6cb0;
+}
+
+.chat-box form {
+  display: flex;
+}
+
+.chat-box input[type="text"] {
+  flex-grow: 1;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.chat-box button {
+  background-color: #3182ce;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.chat-box button:hover {
+  background-color: #2b6cb0;
+}
+
+input{
+  color: #2b6cb0;
+}
+.fixed {
+  position: fixed;
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.p-2 {
+  padding: 1rem; /* Adjust padding for the close button */
+}

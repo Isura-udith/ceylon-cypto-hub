@@ -60,7 +60,7 @@ app.post('/signup', async (req, res) => {
       name: name,
       email: email,
       phone: phone,
-      password: await bcrypt.hash(password, 10),
+      password: password,
     });
 
     await newUser.save();
@@ -122,6 +122,10 @@ app.post('/tradedata', async (req, res) => {
   }
 });
 
+app.listen(PORT, () => {
+  console.log('Server running at ' + PORT);
+});
+
 app.get('/user/:email', async (req, res) => {
   try {
     const email = req.params.email;
@@ -151,7 +155,6 @@ app.put('/user/:email', async (req, res) => {
     res.status(500).json({ message: 'Failed to update user data', error: err.message });
   }
 });
-
 app.get('/userdashboard', async (req, res) => {
   const { email } = req.query;
   try {
@@ -164,8 +167,4 @@ app.get('/userdashboard', async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch user data and trades', error: err.message });
   }
-});
-
-app.listen(PORT, () => {
-  console.log('Server running at ' + PORT);
 });
