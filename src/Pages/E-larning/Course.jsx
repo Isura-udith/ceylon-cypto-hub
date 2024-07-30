@@ -1,27 +1,66 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactPlayer from 'react-player/youtube'; // Importing ReactPlayer
 import './Course.css';
+import Chat from '../../components/Chat.jsx'; // Import the Chat component
 
 const Course = () => {
-  // Example data for courses
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
+  const [currentVideoLink, setCurrentVideoLink] = useState(''); // State to track current video link
+
   const courses = [
-    { id: 1, title: 'Introduction to Cryptocurrency and Blockchain Technology', description: 'Dive into the world of digital currencies with this comprehensive beginnerDive into the world of digital currencies with this comprehensive beginner course. Understand the basics of cryptocurrency, the underlying blockchain technology, and how these innovations are transforming the financial landscape. Perfect for those new to the crypto space. This course will provide you with the foundational knowledge to start your journey confidently.', instructor: 'John Doe', rating: 4.5 },
-    { id: 2, title: 'Advanced Trading Strategies in Cryptocurrency Markets', description: 'Enhance your trading skills with advanced strategies tailored for the volatile cryptocurrency markets. And also can learn about technical analysis, risk management, and market psychology to make informed trading decisions. This course is designed for intermediate to advanced traders looking to refine their strategies and maximize their returns in the dynamic crypto environment.This will knowledge about advanced trading strategies.', instructor: 'Jane Smith', rating: 4.8 },
-    { id: 3, title: 'Legal and Regulatory Aspects of Cryptocurrencies', description: 'Stay ahead of the curve with a thorough understanding of the legal and regulatory landscape surrounding cryptocurrencies. This course covers international regulations, compliance requirements, and legal considerations for individuals and businesses operating in the crypto space. Ideal for legal professionals, entrepreneurs, and anyone keen on staying informed about the legalities of digital currencies.', instructor: 'Alex Johnson', rating: 4.2 },
-    { id: 4, title: 'Candlestick Patterns for Cryptocurrency Trading', description: 'Master the art of reading candlestick patterns and improve your trading strategies. This course covers essential patterns, their meanings, and how to apply them in real-world trading scenarios.', instructor: 'Mark Lee', rating: 4.7 },
-    { id: 5, title: 'Chart Patterns and Technical Analysis', description: 'Gain in-depth knowledge of chart patterns and their significance in predicting market movements. In here can learn to identify and utilize these patterns to enhance your trading decisions.', instructor: 'Samantha Green', rating: 4.6 },
+    { 
+      id: 1, 
+      title: 'Introduction to Cryptocurrency and Blockchain Technology', 
+      description: 'Dive into the world of digital currencies with this comprehensive beginner course. Understand the basics of cryptocurrency, the underlying blockchain technology, and how these innovations are transforming the financial landscape. Perfect for those new to the crypto space. This course will provide you with the foundational knowledge to start your journey confidently.', 
+      instructor: 'John Doe', 
+      rating: 4.5,
+      link: 'https://youtu.be/2yJqjTiwpxM' // Added link for the course
+    },
+    { 
+      id: 2, 
+      title: 'Advanced Trading Strategies in Cryptocurrency Markets', 
+      description: 'Enhance your trading skills with advanced strategies tailored for the volatile cryptocurrency markets. Learn about technical analysis, risk management, and market psychology to make informed trading decisions. This course is designed for intermediate to advanced traders looking to refine their strategies and maximize their returns in the dynamic crypto environment.', 
+      instructor: 'Jane Smith', 
+      rating: 4.8,
+      link: 'https://youtu.be/1wO9NPZ5t8s?si=_j7c-A2DeIxzRAIA' // Added link for the course
+    },
+    { 
+      id: 3, 
+      title: 'Legal and Regulatory Aspects of Cryptocurrencies', 
+      description: 'Stay ahead of the curve with a thorough understanding of the legal and regulatory landscape surrounding cryptocurrencies. International regulations, compliance requirements, legal considerations for individuals and businesses operating in the crypto space are in here. Legal professionals, entrepreneurs, keep on staying informed about the legalities of digital currencies.', 
+      instructor: 'Alex Johnson', 
+      rating: 4.2,
+      link: 'https://youtu.be/39fMZfP8dl4?si=EmrGe9N8qCp419Je' // Added link for the course
+    },
+    { 
+      id: 4, 
+      title: 'Candlestick Patterns for Cryptocurrency Trading', 
+      description: 'Master the art of reading candlestick patterns and improve your trading strategies. This course covers essential patterns, their meanings, and how to apply them in real-world trading scenarios.', 
+      instructor: 'Mark Lee', 
+      rating: 4.7,
+      link: 'https://youtu.be/lXx1bfY7LpA?si=H6SV4DC_2twwXZVO' // Added link for the course
+    },
+    { 
+      id: 5, 
+      title: 'Chart Patterns and Technical Analysis', 
+      description: 'In thi cource gain in-depth knowledge of chart patterns and their significance in predicting market movements. And also learn to identify and utilize these patterns to enhance your trading decisions.', 
+      instructor: 'Samantha Green', 
+      rating: 4.6,
+      link: 'https://youtu.be/nyiFwRGYB84?si=TSVzSx8IUWYR3Bb6' // Added link for the course
+    },
   ];
 
-  // Chat state
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  // Function to open the modal with the selected video's link
+  const openModal = (link) => {
+    setCurrentVideoLink(link);
+    setIsModalOpen(true);
+  };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if (input.trim()) {
-      setMessages([...messages, input]);
-      setInput('');
-    }
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setCurrentVideoLink('');
   };
 
   return (
@@ -36,28 +75,8 @@ const Course = () => {
           At CEYLON CRYPTO HUB, we offer a range of courses designed to educate you on the intricacies of cryptocurrencies and the legal aspects surrounding them. Our goal is to provide you with the knowledge and skills to navigate the crypto world confidently and securely.
         </p>
       </div>
-         {/* Chat Box Section */}
-         <div className="chat-box container mx-auto py-6 px-6">
-        <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Chat with Us</h2>
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <div className="chat-messages mb-4">
-            {messages.map((msg, index) => (
-              <div key={index} className="chat-message bg-blue-100 p-2 rounded my-2">{msg}</div>
-            ))}
-          </div>
-          <form onSubmit={handleSendMessage} className="flex">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="flex-grow p-2 border border-gray-300 rounded-l-lg"
-              placeholder="Type your message..."
-            />
-            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">Send</button>
-          </form>
-        </div>
-      </div>
-      
+      {/* Chat Component */}
+      <Chat />
       {/* Courses Section */}
       <div className="container mx-auto py-0 px-6">
         <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Explore Our Courses</h2>
@@ -79,19 +98,41 @@ const Course = () => {
                   </div>
                   <span className="text-gray-600">{course.instructor}</span>
                 </div>
-                <Link to={`/course/${course.id}`} className="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">View Course</Link>
+                <button 
+                  onClick={() => openModal(course.link)} // Open modal with the course link
+                  className="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300"
+                >
+                  View Course
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
-
- 
-
-
-
+      
+      {/* Modal for Video Player */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+          <div className="bg-white rounded-lg overflow-hidden w-11/12 md:w-3/4 lg:w-1/2 relative">
+            <button 
+              onClick={closeModal} 
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 p-2 rounded-full"
+              aria-label="Close modal"
+            >
+              &times; {/* Close button */}
+            </button>
+            <ReactPlayer 
+              url={currentVideoLink} 
+              width="100%" 
+              height="400px" 
+              controls 
+              playing 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default Course;

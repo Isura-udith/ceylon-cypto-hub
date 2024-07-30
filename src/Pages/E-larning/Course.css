@@ -1,10 +1,11 @@
 /* Course.css */
 
 .intro-section {
-  background-color: #1a202c;
-  color: white;
+  background-color: #2b6bb000;
+  color: rgb(5, 4, 4);
   padding: 3rem 1.5rem;
   text-align: center;
+  color: white;
 }
 
 .intro-section h1 {
@@ -108,13 +109,15 @@
   max-height: 300px;
   overflow-y: auto;
   margin-bottom: 1rem;
+
 }
 
 .chat-box .chat-message {
-  background-color: #edf2f7;
+  background-color: #8daecf69;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   margin: 0.5rem 0;
+  color: #2b6cb0;
 }
 
 .chat-box form {
@@ -141,4 +144,19 @@
 
 .chat-box button:hover {
   background-color: #2b6cb0;
+}
+
+input{
+  color: #2b6cb0;
+}
+.fixed {
+  position: fixed;
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.p-2 {
+  padding: 1rem; /* Adjust padding for the close button */
 }
