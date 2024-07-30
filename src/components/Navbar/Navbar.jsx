@@ -48,10 +48,9 @@ const Navbar = () => {
 
         <ul className='flex gap-12'>
           <Link to={`/`}><li className='hover:text-indigo-300'>Home</li></Link>
-          <Link to={`/course`}><li className='hover:text-indigo-300'>E-Learning</li></Link>
           <Link to={`/market`}><li className='hover:text-indigo-300'>Market</li></Link>
           <Link to={`/trade`}><li className='hover:text-indigo-300'>Trade</li></Link>
-          <Link to='/test'><li className='hover:text-indigo-300'>Test</li></Link>
+          <Link to={`/course`}><li className='hover:text-indigo-300'>Learn</li></Link>
           <div className='flex items-center'>
             <select onChange={currencyHandler} className='p-1 ml-2 text-blue-900 bg-white rounded hover:bg-blue-100'>
               <option value="USD">USD</option>

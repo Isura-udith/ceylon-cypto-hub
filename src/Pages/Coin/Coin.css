@@ -19,6 +19,7 @@
 }
 .coin{
     padding: 0 20px;
+    padding-top: 20px;
 }
 .coin-name{
     display: flex;
@@ -36,9 +37,11 @@
     font-weight: 500;
 }
 .coin-chart{
-    max-width: 600px;
-    height: 250px;
+    max-width: 1300px;
+    height: 700px;
     margin: auto;
+    -ms-flex-item-align: center;
+    ;
 }
 .coin-chart canvas{
     width: 100%;

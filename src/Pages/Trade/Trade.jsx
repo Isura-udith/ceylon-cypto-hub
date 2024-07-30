@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Calander from "../../components/Calander";
 import Tradedata from "../../components/Tradedata";
+import Contact from "../../components/Contact";
 
 const Trade = () => {
   return (
@@ -16,12 +16,13 @@ const Trade = () => {
       </TextParallaxContent>
       <TextParallaxContent
         imgUrl="https://cdn.pixabay.com/photo/2021/08/06/00/38/stock-trading-6525084_960_720.jpg??q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-       // subheading="Broker"
         heading="Connect with borker"
       >
         <ExampleContentThree />
       </TextParallaxContent>
+      
       <Tradedata/>
+      <Contact/>
     </div>
   );
 };
@@ -133,6 +134,6 @@ const ExampleContentThree = () => (
     </div>
   </div>
   
-
 );
+
 export default Trade;

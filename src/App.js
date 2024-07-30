@@ -11,7 +11,10 @@ import Signup from './Pages/Signup/Signup'
 import Dashboard from './Pages/Dashboard/UserDashboard'
 import Test from './Pages/Test/Test'
 import Elearning from './Pages/E-learning/Course'
-
+import Admin from './Pages/Admin/Admin'
+import SignDashboard from './Pages/Admin/SignDashboard'
+import TradeDashboard from './Pages/Admin/TradeDashboard'
+import TradeClose from './Pages/Admin/TradeClose'
 
 const App = () => {
 
@@ -31,10 +34,15 @@ const App = () => {
         <Route path='/userdashboard' element={<Dashboard/>}/>
         <Route path='/Test' element={<Test/>}/>
         <Route path='/course' element={<Elearning/>}/>
-        
+        <Route path='/Admin' element={<Admin/>}/>
+        <Route path='/SignDashboard' element={<SignDashboard/>}/>
+        <Route path='/TradeDashboard' element={<TradeDashboard/>}/>
+        <Route path='/TradeClose' element={<TradeClose/>}/>
 
-      </Routes>
+        </Routes>
+
       <Footer/>
+      
       
     </div>
   )

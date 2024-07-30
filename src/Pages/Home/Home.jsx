@@ -55,7 +55,7 @@ const Home = () => {
       
           <div>
             <span className="block mb-8 text-4xl font-semibold text-indigo-300 md:text-3xl">
-              Hi traders...
+              Welcome traders!
             </span>
             <h3 className="text-4xl font-semibold md:text-6xl">
               CEYLON CRYPTO HUB
@@ -263,7 +263,7 @@ const Options = ({ votes, setVotes }) => {
   return (
     <div className="col-span-1 py-12">
       <h3 className="mb-6 text-3xl font-semibold text-slate-50">
-        What's your opinion?
+        Our charts details ?
       </h3>
       <div className="mb-6 space-y-2">
         {votes.map((vote) => {

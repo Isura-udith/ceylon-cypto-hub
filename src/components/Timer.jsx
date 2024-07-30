@@ -70,8 +70,7 @@ const Timer2 = () => {
             Hurry, Limited Availability
           </h1>
           <span className="text-sm font-semibold text-center leading-8 text-[#959AAE]">
-            Be a part of Singing Concert, Grab the Pass before it&apos;s
-            complete!
+            Be a part of Singing Concert, Grab the free tranding fees!
           </span>
         </div>
         <div className="flex justify-between sm:px-4">
@@ -80,7 +79,7 @@ const Timer2 = () => {
               {countDownTime?.days}
             </span>
             <span className="text-sm text-[#FBFAF8] font-bold">
-              {countDownTime?.days == 1 ? "Day" : "Days"}
+              {countDownTime?.days === 1 ? "Day" : "Days"}
             </span>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
@@ -88,7 +87,7 @@ const Timer2 = () => {
               {countDownTime?.hours}
             </span>
             <span className="text-sm text-[#FBFAF8] font-bold">
-              {countDownTime?.hours == 1 ? "Hour" : "Hours"}
+              {countDownTime?.hours === 1 ? "Hour" : "Hours"}
             </span>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
@@ -96,7 +95,7 @@ const Timer2 = () => {
               {countDownTime?.minutes}
             </span>
             <span className="text-sm text-[#FBFAF8] font-bold">
-              {countDownTime?.minutes == 1 ? "Minute" : "Minutes"}
+              {countDownTime?.minutes === 1 ? "Minute" : "Minutes"}
             </span>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
@@ -104,7 +103,7 @@ const Timer2 = () => {
               {countDownTime?.seconds}
             </span>
             <span className="text-sm text-[#FBFAF8] font-bold">
-              {countDownTime?.seconds == 1 ? "Second" : "Seconds"}
+              {countDownTime?.seconds === 1 ? "Second" : "Seconds"}
             </span>
           </div>
         </div>

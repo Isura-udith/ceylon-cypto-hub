@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Trade = require('./models/tradeDT');
 const connectDB = require('./db');
+const TradeClose = require('./models/tradeCloseSchema'); 
 
 dotenv.config();
 connectDB();
@@ -166,5 +167,89 @@ app.get('/userdashboard', async (req, res) => {
     res.status(200).json({ user, trades });
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch user data and trades', error: err.message });
+  }
+});
+
+
+
+app.get('/admin/users', async (req, res) => {
+  try {
+    const users = await User.find().select('-password');
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch users', error: err.message });
+  }
+});
+
+
+
+
+
+// Get user by ID for admin dashboard
+app.get('/admin/user/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).select('-password');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch user data', error: err.message });
+  }
+});
+
+// Update user by ID for admin dashboard
+app.put('/admin/user/:id', async (req, res) => {
+  try {
+    const { name, email, phone, password } = req.body;
+    const updateData = { name, email, phone };
+
+    if (password) {
+      updateData.password = await bcrypt.hash(password, 10);
+    }
+
+    const user = await User.findByIdAndUpdate(req.params.id, updateData, { new: true }).select('-password');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to update user data', error: err.message });
+  }
+});
+
+// Delete user by ID for admin dashboard
+app.delete('/admin/user/:id', async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to delete user', error: err.message });
+  }
+});
+
+
+
+app.post('/close-trade', async (req, res) => {
+  const { coinid, email, message } = req.body;
+  try {
+    const newTradeClose = new TradeClose({ coinid, email, message });
+    await newTradeClose.save();
+    res.status(201).json(newTradeClose);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to close trade', error: err.message });
+  }
+});
+
+// Newly added endpoint for fetching all closed trades for admin
+app.get('/admin/trades', async (req, res) => {
+  try {
+    const trades = await TradeClose.find();
+    res.status(200).json(trades);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch trades', error: err.message });
   }
 });
